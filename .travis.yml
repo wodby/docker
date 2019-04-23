@@ -1,15 +1,22 @@
 language: bash
 
 services:
-  - docker
+- docker
 
 env:
   matrix:
-    - ALPINE_VER=3 TAGS=latest
-    - ALPINE_VER=3 TAGS=dev ALPINE_DEV=1
+  - ALPINE_VER=3 TAGS=latest
+  - ALPINE_VER=3 TAGS=dev ALPINE_DEV=1
 
 script:
-  - make && make test
+- make && make test
 
 after_success:
-  - . "${TRAVIS_BUILD_DIR}/release.sh"
+- . "${TRAVIS_BUILD_DIR}/release.sh"
+
+notifications:
+  email:
+    recipients:
+    - travisci@wodby.com
+    on_success: never
+    on_failure: always
