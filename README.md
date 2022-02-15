@@ -1,9 +1,8 @@
 # Docker Container Image with Docker
 
-[![Build Status](https://travis-ci.org/wodby/docker.svg?branch=master)](https://travis-ci.org/wodby/docker)
+[![Build Status](https://github.com/wodby/docker/workflows/Build%20docker%20image/badge.svg)](https://github.com/wodby/docker/actions)
 [![Docker Pulls](https://img.shields.io/docker/pulls/wodby/docker.svg)](https://hub.docker.com/r/wodby/docker)
 [![Docker Stars](https://img.shields.io/docker/stars/wodby/docker.svg)](https://hub.docker.com/r/wodby/docker)
-[![Docker Layers](https://images.microbadger.com/badges/image/wodby/docker.svg)](https://microbadger.com/images/wodby/docker)
 
 This is just [wodby/alpine](https://github.com/wodby/alpine) with installed docker package.
 
@@ -11,9 +10,9 @@ This is just [wodby/alpine](https://github.com/wodby/alpine) with installed dock
 
 About images:
 
-* All images are based on Alpine Linux
+* All images based on Alpine Linux
 * Base image: [wodby/alpine](https://github.com/wodby/alpine)
-* [Travis CI builds](https://travis-ci.org/wodby/docker) 
+- [GitHub actions builds](https://github.com/wodby/docker/actions)
 * [Docker Hub](https://hub.docker.com/r/wodby/docker) 
 
 [_(Dockerfile)_]: https://github.com/wodby/docker/tree/master/Dockerfile

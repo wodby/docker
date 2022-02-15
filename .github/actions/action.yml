@@ -1,0 +1,26 @@
+name: Build
+description: Build Docker image
+inputs:
+  version:
+    description: alpine version
+    required: true
+  dev:
+    description: dev version of image
+    required: false
+  tags:
+    description: image tags
+    required: true
+runs:
+  using: "composite"
+  steps:
+  - name: Build image
+    env:
+      ALPINE_VER: ${{ inputs.version }}
+      ALPINE_DEV: ${{ inputs.dev }}
+      TAGS: ${{ inputs.tags }}
+    run: |
+      set -e
+      make
+      make test
+      . $GITHUB_ACTION_PATH/release.sh
+    shell: bash
