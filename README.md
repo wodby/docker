@@ -4,13 +4,13 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/wodby/docker.svg)](https://hub.docker.com/r/wodby/docker)
 [![Docker Stars](https://img.shields.io/docker/stars/wodby/docker.svg)](https://hub.docker.com/r/wodby/docker)
 
-This is just [wodby/alpine](https://github.com/wodby/alpine) with installed docker package.
+This is just [wodby/alpine](https://github.com/wodby/alpine) with an installed docker package.
 
 ## Docker Images
 
 About images:
 
-* All images based on Alpine Linux
+* All images are based on Alpine Linux
 * Base image: [wodby/alpine](https://github.com/wodby/alpine)
 - [GitHub actions builds](https://github.com/wodby/docker/actions)
 * [Docker Hub](https://hub.docker.com/r/wodby/docker) 
