@@ -10,16 +10,15 @@ on:
 
   pull_request:
 
-env:
-  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-
 jobs:
   latest:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
     - uses: ./.github/actions
+      env:
+        DOCKER_USERNAME: ${{ github.event_name != 'pull_request' && secrets.DOCKER_USERNAME || '' }}
+        DOCKER_PASSWORD: ${{ github.event_name != 'pull_request' && secrets.DOCKER_PASSWORD || '' }}
       with:
         version: 3
         tags: latest
@@ -28,6 +27,9 @@ jobs:
     steps:
     - uses: actions/checkout@v6
     - uses: ./.github/actions
+      env:
+        DOCKER_USERNAME: ${{ github.event_name != 'pull_request' && secrets.DOCKER_USERNAME || '' }}
+        DOCKER_PASSWORD: ${{ github.event_name != 'pull_request' && secrets.DOCKER_PASSWORD || '' }}
       with:
         version: 3
         tags: dev
