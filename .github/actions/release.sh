@@ -12,7 +12,7 @@ if [[ "${GITHUB_REF}" == refs/heads/master || "${GITHUB_REF}" == refs/tags/* ]];
     IFS=',' read -ra tags <<< "${TAGS}"
 
     for tag in "${tags[@]}"; do
-        if [[ -n "${IMAGE_REVISION:-}" ]]; then
+        if [[ "${IMAGE_REVISION:-}" =~ ^r[1-9][0-9]*$ ]]; then
             revision_tag="${tag}-${IMAGE_REVISION}"
             if [[ "${tag}" == latest ]]; then
                 revision_tag="${IMAGE_REVISION}"
