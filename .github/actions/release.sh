@@ -6,12 +6,22 @@ if [[ "${GITHUB_REF}" == refs/heads/master || "${GITHUB_REF}" == refs/tags/* ]];
     printf '%s' "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
 
     if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
-      export STABILITY_TAG="${GITHUB_REF##*/}"
+      export IMAGE_REVISION="${GITHUB_REF##*/}"
     fi
 
     IFS=',' read -ra tags <<< "${TAGS}"
 
     for tag in "${tags[@]}"; do
-        make push TAG="${tag}";
+        if [[ "${IMAGE_REVISION:-}" =~ ^r(0|[1-9][0-9]*)$ ]]; then
+            revision_tag="${tag}-${IMAGE_REVISION}"
+            if [[ "${tag}" == latest ]]; then
+                revision_tag="${IMAGE_REVISION}"
+            fi
+            # Publish the image built by this job under its revision reference.
+            docker tag "wodby/docker:${tag}" "wodby/docker:${revision_tag}"
+            make push TAG="${revision_tag}"
+        else
+            make push TAG="${tag}"
+        fi
     done
 fi

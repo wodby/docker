@@ -6,6 +6,13 @@
 
 This is just [wodby/alpine](https://github.com/wodby/alpine) with an installed docker package.
 
+## Image revisions
+
+Use image revision tags such as `wodby/docker:rN` to select a Wodby image revision.
+Image revisions start at `r0` and increase with each release.
+See [release tags](https://github.com/wodby/docker/tags) for available revisions and the [image revision policy](https://github.com/wodby/images#image-revisions) for upgrade guidance.
+Previously published image tags remain available.
+
 ## Docker Images
 
 About images:
