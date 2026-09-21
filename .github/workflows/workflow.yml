@@ -34,3 +34,15 @@ jobs:
         version: 3
         tags: dev
         dev: 1
+
+  image-release:
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/r')
+    needs: [ latest, dev ]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: image-release-${{ github.ref }}
+      cancel-in-progress: false
+    steps:
+      - uses: wodby/images/.github/actions/image-release@412e2d9ce29c41835ff653b0945bba72eabd9efb
